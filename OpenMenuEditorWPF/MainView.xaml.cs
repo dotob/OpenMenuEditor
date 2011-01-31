@@ -20,6 +20,11 @@ namespace OpenMenuEditorWPF {
     public MainView() {
       this.ViewModel = new MainViewModel();
       this.InitializeComponent();
+
+      // sparkle updater
+#if !DEBUG
+      WinSparkleWrapper.Startup("http://update.dotob.de/openmenueditor.rss");
+#endif
     }
 
     public MainViewModel ViewModel { get; set; }
@@ -114,6 +119,12 @@ namespace OpenMenuEditorWPF {
       } else {
         this.ViewModel.SelectedMenu = null;
       }
+    }
+
+    private void uc_Closed(object sender, System.EventArgs e) {
+#if !DEBUG
+      WinSparkleWrapper.Cleanup();
+#endif
     }
   }
 }
