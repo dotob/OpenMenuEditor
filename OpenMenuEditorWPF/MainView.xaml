@@ -1,0 +1,152 @@
+﻿<Window x:Class="OpenMenuEditorWPF.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:OpenMenu="clr-namespace:OpenMenuEditor.OpenMenu"
+        Title="Fringhaus Menu-Editor"
+        Height="550"
+        Width="800"
+        x:Name="uc">
+    <Window.Resources>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin"
+                    Value="5" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin"
+                    Value="5" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin"
+                    Value="5" />
+        </Style>
+
+        <HierarchicalDataTemplate DataType="{x:Type OpenMenu:MenuGroup}"
+                                  ItemsSource="{Binding Items}">
+            <Border BorderBrush="DarkGray"
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Padding="3"
+                    Margin="3"
+                    Width="400">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0"
+                               Grid.Row="0"
+                               VerticalAlignment="Center">Gruppe:</TextBlock>
+                    <TextBox Grid.Column="1"
+                             Grid.Row="0"
+                             VerticalAlignment="Center"
+                             Text="{Binding Name}" />
+
+                    <TextBlock Grid.Column="0"
+                               Grid.Row="1"
+                               VerticalAlignment="Center">Beschreibung:</TextBlock>
+                    <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             VerticalAlignment="Center"
+                             Text="{Binding Description}" />
+                </Grid>
+            </Border>
+        </HierarchicalDataTemplate>
+        <DataTemplate DataType="{x:Type OpenMenu:MenuItem}">
+            <Border BorderBrush="DarkGray"
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    Padding="3"
+                    Margin="3"
+                    Width="500">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0"
+                               Grid.Row="0"
+                               VerticalAlignment="Center">Gericht:</TextBlock>
+                    <TextBox Grid.Column="1"
+                             Grid.Row="0"
+                             VerticalAlignment="Center"
+                             Text="{Binding Name}" />
+
+                    <TextBlock Grid.Column="0"
+                               Grid.Row="1"
+                               VerticalAlignment="Center">Beschreibung:</TextBlock>
+                    <TextBox Grid.Column="1"
+                             Grid.Row="1"
+                             VerticalAlignment="Center"
+                             Text="{Binding Description}" />
+                    <TextBlock Grid.Column="0"
+                               Grid.Row="2"
+                               VerticalAlignment="Center">Preis:</TextBlock>
+                    <TextBox Grid.Column="1"
+                             Grid.Row="2"
+                             VerticalAlignment="Center"
+                             Text="{Binding Price}" />
+                    <StackPanel Grid.Column="0"
+                                Grid.Row="3"
+                                Grid.ColumnSpan="2"
+                                Orientation="Horizontal">
+                        <CheckBox VerticalAlignment="Center"
+                                  IsChecked="{Binding Disabled}">
+                            Verbergen
+                        </CheckBox>
+                        <CheckBox VerticalAlignment="Center"
+                                  IsChecked="{Binding Vegetarian}">
+                            Vegetarisch
+                        </CheckBox>
+                        <CheckBox VerticalAlignment="Center"
+                                  IsChecked="{Binding Special}">
+                            Spezial
+                        </CheckBox>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="tabContent">
+            <TreeView ItemsSource="{Binding Groups}"
+                      SelectedItemChanged="TreeView_SelectedItemChanged">
+            </TreeView>
+        </DataTemplate>
+        <DataTemplate x:Key="tabHeader">
+            <TextBox Text="{Binding Name}" />
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToolBar Grid.Row="0">
+            <Button Command="{Binding NewMenuCommand, ElementName=uc}">Neues Menu</Button>
+            <Button Command="{Binding NewMenuGroupCommand, ElementName=uc}">Neue Gruppe</Button>
+            <Button Command="{Binding NewMenuItemCommand, ElementName=uc}">Neues Gericht</Button>
+            <Button Command="{Binding MoveElementUpCommand, ElementName=uc}">Hoch</Button>
+            <Button Command="{Binding MoveElementDownCommand, ElementName=uc}">Runter</Button>
+            <Button Command="{Binding DeleteElementCommand, ElementName=uc}">Löschen</Button>
+            <Button Command="{Binding SaveCommand, ElementName=uc}">Speichern</Button>
+            <Button Command="{Binding CloseCommand, ElementName=uc}">Beenden</Button>
+        </ToolBar>
+        <TabControl Grid.Row="1" 
+            ItemsSource="{Binding ViewModel.OpenMenu.Menus, ElementName=uc}"
+                    ItemTemplate="{StaticResource tabHeader}"
+                    ContentTemplate="{StaticResource tabContent}"
+                    HorizontalContentAlignment="Stretch"
+                    SelectionChanged="TabControl_SelectionChanged">
+        </TabControl>
+    </Grid>
+</Window>

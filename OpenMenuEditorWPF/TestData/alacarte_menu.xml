@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<omf uuid="df8cb20e-297c-11e0-91d7-0018512e6b26" date_created="2011-01-27">
+  <menus>
+    <menu name="a la carte" currency_symbol="EUR" uid="1">
+      <menu_description></menu_description>
+      <menu_duration>
+        <menu_duration_name>all</menu_duration_name>
+        <menu_duration_time_start></menu_duration_time_start>
+        <menu_duration_time_end></menu_duration_time_end>
+      </menu_duration>
+      <menu_groups>
+        <menu_group name="Vorspeisen" uid="1">
+          <menu_group_description></menu_group_description>
+          <menu_items>
+            <menu_item uid="1">
+              <menu_item_name>Gebratene Jakobsmuscheln</menu_item_name>
+              <menu_item_description>im Gemüsegirlandenkranz mit beurre blanc</menu_item_description>
+              <menu_item_price>13.50</menu_item_price>
+            </menu_item>
+          </menu_items>
+        </menu_group>
+        <menu_group name="Hauptgerichte" uid="2">
+          <menu_group_description></menu_group_description>
+          <menu_items>
+            <menu_item uid="3">
+              <menu_item_name>Seezunge Müllerin Art</menu_item_name>
+              <menu_item_description>in guter Butter knusprig gebraten, Blattspinat und Salzkartoffel</menu_item_description>
+              <menu_item_price>33.00</menu_item_price>
+            </menu_item>
+          </menu_items>
+        </menu_group>
+        <menu_group name="Dessert" uid="3">
+          <menu_group_description></menu_group_description>
+          <menu_items>
+            <menu_item uid="4">
+              <menu_item_name>Crépes Suzettes</menu_item_name>
+              <menu_item_description>am Tisch flambiert, ab zwei Personen, je Person</menu_item_description>
+              <menu_item_price>7.00</menu_item_price>
+            </menu_item>
+          </menu_items>
+        </menu_group>
+      </menu_groups>
+    </menu>
+  </menus>
+</omf>
