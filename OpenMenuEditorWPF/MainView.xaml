@@ -5,150 +5,236 @@
         Title="Fringhaus Menu-Editor"
         Height="550"
         Width="800"
-        x:Name="uc" Closed="uc_Closed">
-    <Window.Resources>
-        <Style TargetType="{x:Type CheckBox}">
-            <Setter Property="Margin"
-                    Value="2 0" />
-        </Style>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="Margin"
-                    Value="0 0 2 0" />
-        </Style>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Margin"
-                    Value="2 2 0 0" />
-        </Style>
+        x:Name="uc"
+        Closed="uc_Closed">
+  <Window.Resources>
+    <Style TargetType="{x:Type CheckBox}">
+      <Setter Property="Margin"
+              Value="2 0" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}">
+      <Setter Property="Margin"
+              Value="0 0 2 0" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}">
+      <Setter Property="Margin"
+              Value="2 2 0 0" />
+    </Style>
 
-        <HierarchicalDataTemplate DataType="{x:Type OpenMenu:MenuGroup}"
-                                  ItemsSource="{Binding Items}">
-            <Border BorderBrush="DarkGray"
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Padding="3"
-                    Margin="3"
-                    Width="600">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Grid.Row="0"
-                               VerticalAlignment="Center">Gruppe:</TextBlock>
-                    <TextBox Grid.Column="1"
-                             Grid.Row="0"
-                             VerticalAlignment="Center"
-                             Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+    <Style x:Key="vbVegetarian"
+           TargetType="{x:Type CheckBox}">
+      <Setter Property="OverridesDefaultStyle"
+              Value="true">
+      </Setter>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Image Source="pack://application:,,,/Images/vegetarian_off.png" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="CheckBox.IsChecked"
+                 Value="true">
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate>
+                <Image Source="pack://application:,,,/Images/vegetarian.png" />
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
 
-                    <TextBlock Grid.Column="2"
-                               Grid.Row="0"
-                               VerticalAlignment="Center">Beschreibung:</TextBlock>
-                    <TextBox Grid.Column="3"
-                             Grid.Row="0"
-                             VerticalAlignment="Center"
-                             Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-                </Grid>
-            </Border>
-        </HierarchicalDataTemplate>
-        <DataTemplate DataType="{x:Type OpenMenu:MenuItem}">
-            <Border BorderBrush="DarkGray"
-                    BorderThickness="1"
-                    CornerRadius="3"
-                    Padding="3"
-                    Margin="3"
-                    Width="500">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0"
-                               Grid.Row="0"
-                               VerticalAlignment="Center">Gericht:</TextBlock>
-                    <TextBox Grid.Column="1"
-                             Grid.Row="0"
-                             VerticalAlignment="Center"
-                             Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="vbSpecial"
+           TargetType="{x:Type CheckBox}">
+      <Setter Property="OverridesDefaultStyle"
+              Value="true">
+      </Setter>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Image Source="pack://application:,,,/Images/special_off.png" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="CheckBox.IsChecked"
+                 Value="true">
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate>
+                <Image Source="pack://application:,,,/Images/special.png" />
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
 
-                    <TextBlock Grid.Column="0"
-                               Grid.Row="1"
-                               VerticalAlignment="Center">Beschreibung:</TextBlock>
-                    <TextBox Grid.Column="1"
-                             Grid.Row="1"
-                             VerticalAlignment="Center"
-                             Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBlock Grid.Column="0"
-                               Grid.Row="2"
-                               VerticalAlignment="Center">Preis:</TextBlock>
-                    <TextBox Grid.Column="1"
-                             Grid.Row="2"
-                             VerticalAlignment="Center"
-                             Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
-                    <StackPanel Grid.Column="0"
-                                Grid.Row="3"
-                                Grid.ColumnSpan="2"
-                                Orientation="Horizontal">
-                        <CheckBox VerticalAlignment="Center"
-                                  IsChecked="{Binding Disabled, UpdateSourceTrigger=PropertyChanged}">
-                            Verbergen
-                        </CheckBox>
-                        <CheckBox VerticalAlignment="Center"
-                                  IsChecked="{Binding Vegetarian, UpdateSourceTrigger=PropertyChanged}">
-                            Vegetarisch
-                        </CheckBox>
-                        <CheckBox VerticalAlignment="Center"
-                                  IsChecked="{Binding Special, UpdateSourceTrigger=PropertyChanged}">
-                            Spezial
-                        </CheckBox>
-                    </StackPanel>
-                </Grid>
-            </Border>
-        </DataTemplate>
+        </Trigger>
+      </Style.Triggers>
+    </Style>    
+    
+    <Style x:Key="vbVisible"
+           TargetType="{x:Type CheckBox}">
+      <Setter Property="OverridesDefaultStyle"
+              Value="true">
+      </Setter>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Image Source="pack://application:,,,/Images/eye_off.png" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="CheckBox.IsChecked"
+                 Value="true">
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate>
+                <Image Source="pack://application:,,,/Images/eye.png" />
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
 
-        <DataTemplate x:Key="tabContent">
-            <TreeView ItemsSource="{Binding Groups}"
-                      SelectedItemChanged="TreeView_SelectedItemChanged">
-            </TreeView>
-        </DataTemplate>
-        <DataTemplate x:Key="tabHeader">
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-        </DataTemplate>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
 
-    </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
+    <HierarchicalDataTemplate DataType="{x:Type OpenMenu:MenuGroup}"
+                              ItemsSource="{Binding Items}">
+      <Border BorderBrush="DarkGray"
+              BorderThickness="1"
+              CornerRadius="3"
+              Padding="3"
+              Margin="3"
+              Width="600">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <ToolBar Grid.Row="0">
-            <Button Command="{Binding NewMenuCommand, ElementName=uc}">Neues Menu</Button>
-            <Button Command="{Binding NewMenuGroupCommand, ElementName=uc}">Neue Gruppe</Button>
-            <Button Command="{Binding NewMenuItemCommand, ElementName=uc}">Neues Gericht</Button>
-            <Button Command="{Binding MoveElementUpCommand, ElementName=uc}">Hoch</Button>
-            <Button Command="{Binding MoveElementDownCommand, ElementName=uc}">Runter</Button>
-            <Button Command="{Binding DeleteElementCommand, ElementName=uc}">Löschen</Button>
-            <Button Command="{Binding SaveCommand, ElementName=uc}">Speichern</Button>
-            <Button Command="{Binding CloseCommand, ElementName=uc}">Beenden</Button>
-        </ToolBar>
-        <TabControl Grid.Row="1" 
-            ItemsSource="{Binding ViewModel.OpenMenu.Menus, ElementName=uc}"
-                    ItemTemplate="{StaticResource tabHeader}"
-                    ContentTemplate="{StaticResource tabContent}"
-                    HorizontalContentAlignment="Stretch"
-                    SelectionChanged="TabControl_SelectionChanged">
-        </TabControl>
-    </Grid>
+            <RowDefinition Height="Auto"></RowDefinition>
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Column="0"
+                     Grid.Row="0"
+                     VerticalAlignment="Center">Gruppe:</TextBlock>
+          <TextBox Grid.Column="1"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+
+          <TextBlock Grid.Column="2"
+                     Grid.Row="0"
+                     VerticalAlignment="Center">Beschreibung:</TextBlock>
+          <TextBox Grid.Column="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+      </Border>
+    </HierarchicalDataTemplate>
+    <DataTemplate DataType="{x:Type OpenMenu:MenuItem}">
+      <Border BorderBrush="DarkGray"
+              BorderThickness="1"
+              CornerRadius="3"
+              Padding="3"
+              Margin="3"
+              Width="500">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Column="0"
+                     Grid.Row="0"
+                     VerticalAlignment="Center">Gericht:</TextBlock>
+          <TextBox Grid.Column="1"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+
+          <TextBlock Grid.Column="0"
+                     Grid.Row="1"
+                     VerticalAlignment="Center">Beschreibung:</TextBlock>
+          <TextBox Grid.Column="1"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+          <TextBlock Grid.Column="0"
+                     Grid.Row="2"
+                     VerticalAlignment="Center">Preis:</TextBlock>
+          <TextBox Grid.Column="1"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+          <StackPanel Grid.Column="0"
+                      Grid.Row="3"
+                      Grid.ColumnSpan="2"
+                      Orientation="Horizontal">
+            <CheckBox VerticalAlignment="Center"
+                      IsChecked="{Binding Disabled, UpdateSourceTrigger=PropertyChanged}"
+                      Style="{StaticResource vbVisible}">
+              Verbergen
+            </CheckBox>
+            <CheckBox VerticalAlignment="Center"
+                      Margin="3 0"
+                      IsChecked="{Binding Vegetarian, UpdateSourceTrigger=PropertyChanged}"
+                      Style="{StaticResource vbVegetarian}">
+              Vegetarisch
+            </CheckBox>
+            <CheckBox VerticalAlignment="Center"
+                      IsChecked="{Binding Special, UpdateSourceTrigger=PropertyChanged}"
+                      Style="{StaticResource vbSpecial}">
+              Spezial
+            </CheckBox>
+          </StackPanel>
+        </Grid>
+      </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="tabContent">
+      <TreeView ItemsSource="{Binding Groups}"
+                SelectedItemChanged="TreeView_SelectedItemChanged">
+      </TreeView>
+    </DataTemplate>
+    <DataTemplate x:Key="tabHeader">
+      <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+    </DataTemplate>
+
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <ToolBar Grid.Row="0">
+      <Button Command="{Binding NewMenuCommand, ElementName=uc}">Neues Menu</Button>
+      <Button Command="{Binding NewMenuGroupCommand, ElementName=uc}">Neue Gruppe</Button>
+      <Button Command="{Binding NewMenuItemCommand, ElementName=uc}">Neues Gericht</Button>
+      <Button Command="{Binding MoveElementUpCommand, ElementName=uc}">Hoch</Button>
+      <Button Command="{Binding MoveElementDownCommand, ElementName=uc}">Runter</Button>
+      <Button Command="{Binding DeleteElementCommand, ElementName=uc}">Löschen</Button>
+      <Button Command="{Binding SaveCommand, ElementName=uc}">Speichern</Button>
+      <Button Command="{Binding CloseCommand, ElementName=uc}">Beenden</Button>
+    </ToolBar>
+    <TabControl Grid.Row="1"
+                ItemsSource="{Binding ViewModel.OpenMenu.Menus, ElementName=uc}"
+                ItemTemplate="{StaticResource tabHeader}"
+                ContentTemplate="{StaticResource tabContent}"
+                HorizontalContentAlignment="Stretch"
+                SelectionChanged="TabControl_SelectionChanged">
+    </TabControl>
+  </Grid>
 </Window>

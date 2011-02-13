@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="INSTALLLOCATION">
+            <Component Id="cmpA825730267480E6592B3C96928FE61F4" Guid="*">
+                <File Id="filB6FA95E7885F551FCB98AB3D15FB0813" Source="$(var.OpenMenuEditorWPF.TargetDir)\OpenMenuEditorWPF.exe" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="OpenMenuEditorWPF.Binaries">
+            <ComponentRef Id="cmpA825730267480E6592B3C96928FE61F4" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="INSTALLLOCATION">
+            <Component Id="cmp46FDFD40F34508BF01616252F6187043" Guid="*">
+                <File Id="fil873FC646C90E779CC6BD854779A63FD4" Source="$(var.OpenMenuEditorWPF.TargetDir)\OpenMenuEditorWPF.pdb" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="OpenMenuEditorWPF.Symbols">
+            <ComponentRef Id="cmp46FDFD40F34508BF01616252F6187043" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="INSTALLLOCATION">
+            <Component Id="cmpB3341119F2A59F942787A34FC199DE00" Guid="*">
+                <File Id="fil16BBC92D4DCA859FAD278BE98870163B" Source="$(var.OpenMenuEditorWPF.ProjectDir)\DelegateCommand.cs" />
+            </Component>
+            <Component Id="cmpF3B25C8C9E277127688BE20B67B46BE6" Guid="*">
+                <File Id="filBCA8DB8134F18617141FF896425ADC51" Source="$(var.OpenMenuEditorWPF.ProjectDir)\FTPTools.cs" />
+            </Component>
+            <Component Id="cmp0B511033735506DD5BD35686EA2F7A30" Guid="*">
+                <File Id="fil58172E29AB611718694C7E74B83D17EC" Source="$(var.OpenMenuEditorWPF.ProjectDir)\MainViewModel.cs" />
+            </Component>
+            <Component Id="cmp78ABADE14009E3607C2A65B0D0F2D402" Guid="*">
+                <File Id="fil08C676CD6B68385C23DE3665EBB59F8B" Source="$(var.OpenMenuEditorWPF.ProjectDir)\WinSparkleWrapper.cs" />
+            </Component>
+            <Component Id="cmpBCDB4F60A783135160137A98172D44B2" Guid="*">
+                <File Id="filA173F900E09651B8601648B19F515656" Source="$(var.OpenMenuEditorWPF.ProjectDir)\App.xaml.cs" />
+            </Component>
+            <Component Id="cmpDC205113694DE9AFBBC1F367414159BA" Guid="*">
+                <File Id="fil9495D57BB4C6609D535700807EC530AE" Source="$(var.OpenMenuEditorWPF.ProjectDir)\MainView.xaml.cs" />
+            </Component>
+            <Component Id="cmpCA0CBB196B40260203D9C5F164205894" Guid="*">
+                <File Id="fil920C31CF76BEE6F2972F93F1347D2532" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenuEditorWPF.csproj" />
+            </Component>
+            <Directory Id="dir6AB542C21B7A9D3F3E8A77D8EA7A5FD8" Name="Tests">
+                <Component Id="cmp55D38CF3772438EEE3CD81D3C480339B" Guid="*">
+                    <File Id="fil8B661A5A0BF6C765543741628AF53A45" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Tests\FromToXMLTests.cs" />
+                </Component>
+                <Component Id="cmp4433D6297E7BB3EE9D13573CC28973DA" Guid="*">
+                    <File Id="filC0AB381B6797D63A81FEB76BA4759277" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Tests\FTPTests.cs" />
+                </Component>
+            </Directory>
+            <Directory Id="dir0E905C545D83FA7739CDA7B3EEEC0CBC" Name="OpenMenu">
+                <Component Id="cmpB403278A520EED6E0FC9FE551AA34C46" Guid="*">
+                    <File Id="fil0DFD18FD4AF468D7BACD56F815AF5C8E" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenu\Menu.cs" />
+                </Component>
+                <Component Id="cmp275DFD02709D95C99F31997C5E025BCE" Guid="*">
+                    <File Id="filFE146F9765214AA715B3E21F9D570E74" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenu\MenuBase.cs" />
+                </Component>
+                <Component Id="cmpEFCD6D91460C908E2DC31D5D7562B37D" Guid="*">
+                    <File Id="filADCC40DC7853DFBC8CE3E9A4A28A930C" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenu\MenuGroup.cs" />
+                </Component>
+                <Component Id="cmp9C6CBAB09C091D007B0E0EE0340473B5" Guid="*">
+                    <File Id="fil77DB62F607FCF802DF9368147EE05B9D" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenu\MenuItem.cs" />
+                </Component>
+                <Component Id="cmp9B09CE3BDC8202736CB2BC22EDD23454" Guid="*">
+                    <File Id="filF8DB512D943EB5EFE7823B19D62FEF90" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenu\OpenMenuFormat.cs" />
+                </Component>
+            </Directory>
+            <Directory Id="dir2F4295B60D9818A5F54CFC7C8694BD0A" Name="Properties">
+                <Component Id="cmp3078CEEFF9A612D634E4FAD38DC2061E" Guid="*">
+                    <File Id="filC09D590A182476E9D80C976321176B8C" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Properties\AssemblyInfo.cs" />
+                </Component>
+                <Component Id="cmp9FA2FD58CEB31FFDEF06623289DEAD4E" Guid="*">
+                    <File Id="fil30959CBA6FABA5D0818E44D169EFC30F" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Properties\Resources.Designer.cs" />
+                </Component>
+                <Component Id="cmpCE0B136A0265383B4DE1DA5D070F93A7" Guid="*">
+                    <File Id="fil0E98278241C4270CCDF3F8D2F654967A" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Properties\Settings.Designer.cs" />
+                </Component>
+                <Component Id="cmpB7D790FC3F6D8F8E146DBE9B155430DD" Guid="*">
+                    <File Id="fil5F40635391C21B69BDE4820D5A11D332" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Properties\Resources.resx" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="OpenMenuEditorWPF.Sources">
+            <ComponentRef Id="cmpB3341119F2A59F942787A34FC199DE00" />
+            <ComponentRef Id="cmpF3B25C8C9E277127688BE20B67B46BE6" />
+            <ComponentRef Id="cmp0B511033735506DD5BD35686EA2F7A30" />
+            <ComponentRef Id="cmp78ABADE14009E3607C2A65B0D0F2D402" />
+            <ComponentRef Id="cmpBCDB4F60A783135160137A98172D44B2" />
+            <ComponentRef Id="cmpDC205113694DE9AFBBC1F367414159BA" />
+            <ComponentRef Id="cmpCA0CBB196B40260203D9C5F164205894" />
+            <ComponentRef Id="cmp55D38CF3772438EEE3CD81D3C480339B" />
+            <ComponentRef Id="cmp4433D6297E7BB3EE9D13573CC28973DA" />
+            <ComponentRef Id="cmpB403278A520EED6E0FC9FE551AA34C46" />
+            <ComponentRef Id="cmp275DFD02709D95C99F31997C5E025BCE" />
+            <ComponentRef Id="cmpEFCD6D91460C908E2DC31D5D7562B37D" />
+            <ComponentRef Id="cmp9C6CBAB09C091D007B0E0EE0340473B5" />
+            <ComponentRef Id="cmp9B09CE3BDC8202736CB2BC22EDD23454" />
+            <ComponentRef Id="cmp3078CEEFF9A612D634E4FAD38DC2061E" />
+            <ComponentRef Id="cmp9FA2FD58CEB31FFDEF06623289DEAD4E" />
+            <ComponentRef Id="cmpCE0B136A0265383B4DE1DA5D070F93A7" />
+            <ComponentRef Id="cmpB7D790FC3F6D8F8E146DBE9B155430DD" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <DirectoryRef Id="INSTALLLOCATION">
+            <Component Id="cmpE69CE85FE5F385B35B4696372AF5D015" Guid="*">
+                <File Id="filA14C0F862583255EC80598E07532B56E" Source="$(var.OpenMenuEditorWPF.ProjectDir)\WinSparkle.dll" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="OpenMenuEditorWPF.Content">
+            <ComponentRef Id="cmpE69CE85FE5F385B35B4696372AF5D015" />
+        </ComponentGroup>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="OpenMenuEditorWPF.Satellites" />
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="OpenMenuEditorWPF.Documents" />
+    </Fragment>
+</Wix>

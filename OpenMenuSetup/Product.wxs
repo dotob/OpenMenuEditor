@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+
+  <Product Id="6e0493cb-a813-4f59-b9c2-367b3b1cbf78" Name="Fringshaus Menu Editor (beta)" Language="1033" Version="1.0.1.0" Manufacturer="dotob" UpgradeCode="8322f190-3c1f-40e1-a661-71719b203802">
+    <Package InstallerVersion="200" Compressed="yes" />
+    <!-- make .net 4 client profile is installed -->
+    <PropertyRef Id="NETFRAMEWORK40CLIENT"/>
+
+    <!-- show dir gui -->
+    <!--<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
+    <UIRef Id="WixUI_InstallDir" />-->
+
+    <Condition Message=".NET Framework 4 wird benötigt. Erst .NET installieren dann diese App.">
+      <![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
+    </Condition>
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="FringshausMenuEditor">
+          <!--<Component Id="cmpA825730267480E6592B3C96928FE61F5" Guid="*">
+            <File Id="filB6FA95E7885F551FCB98AB3D15FB0813" Source="$(var.OpenMenuEditorWPF.TargetDir)\OpenMenuEditorWPF.exe" />
+            <Shortcut Id="desktopFoobar10" Directory="DesktopFolder" Name="Fringshaus Menu Editor" WorkingDirectory='INSTALLDIR' Advertise="yes" />
+          </Component>-->
+
+          <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+          <!-- <Component Id="ProductComponent" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e"> -->
+          <!-- TODO: Insert files, registry keys, and other resources here. -->
+          <!-- </Component> -->
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">
+        <Shortcut Id="ApplicationStartMenuShortcut" Name="Fringshaus Menu Editor" Description="Das Fringshaus Menu bearbeiten" Target="[APPLICATIONROOTDIRECTORY]OpenMenuEditorWPF.exe"
+                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+        <!--<RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>-->
+      </Component>
+    </DirectoryRef>
+
+
+
+    <Feature Id="ProductFeature" Title="OpenMenuSetup" Level="1">
+      <!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+      <!-- <ComponentRef Id="ProductComponent" /> -->
+
+      <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
+      <ComponentGroupRef Id="Product.Generated" />
+    </Feature>
+  </Product>
+</Wix>

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMenuEditorWPF", "OpenMenuEditorWPF\OpenMenuEditorWPF.csproj", "{4C6FE069-A4DA-477C-A4BF-482EE1B5835C}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "OpenMenuSetup", "OpenMenuSetup\OpenMenuSetup.wixproj", "{4B263E87-9F25-42FA-817B-AC2428D9CE11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,16 @@ Global
 		{4C6FE069-A4DA-477C-A4BF-482EE1B5835C}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4C6FE069-A4DA-477C-A4BF-482EE1B5835C}.Release|x86.ActiveCfg = Release|x86
 		{4C6FE069-A4DA-477C-A4BF-482EE1B5835C}.Release|x86.Build.0 = Release|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Debug|x86.ActiveCfg = Debug|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Debug|x86.Build.0 = Debug|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Release|Any CPU.ActiveCfg = Release|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Release|x86.ActiveCfg = Release|x86
+		{4B263E87-9F25-42FA-817B-AC2428D9CE11}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

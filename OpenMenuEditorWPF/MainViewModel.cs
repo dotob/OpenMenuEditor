@@ -8,7 +8,7 @@ namespace OpenMenuEditorWPF {
   public class MainViewModel {
     private readonly string fileToStoreLocal;
     private readonly string menuFileName;
-    private bool goOnline;
+    private bool goOnline = true;
 
     public MainViewModel() {
       this.OpenMenu = new OpenMenuFormat();

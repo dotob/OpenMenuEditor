@@ -39,6 +39,7 @@
     <Reference Include="nunit.framework, Version=2.5.8.10295, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -108,6 +109,15 @@
     <Resource Include="TestData\alacarte_menu.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\vegetarian.png" />
+    <None Include="Resources\vegetarian_off.png" />
+    <Resource Include="Images\vegetarian.png" />
+    <Resource Include="Images\vegetarian_off.png" />
+    <Resource Include="Images\special.png" />
+    <Resource Include="Images\special_off.png" />
+    <Resource Include="Images\eye.png" />
+    <Resource Include="Images\eye_off.png" />
+    <Resource Include="Images\text.png" />
     <Content Include="WinSparkle.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
