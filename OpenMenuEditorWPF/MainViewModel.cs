@@ -1,13 +1,14 @@
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 using OpenMenuEditor.OpenMenu;
 using OpenMenuEditorWPF.Properties;
 
 namespace OpenMenuEditorWPF {
   public class MainViewModel {
-    private readonly string fileToStoreLocal;
-    private readonly string menuFileName;
+    private string fileToStoreLocal;
+    private string menuFileName;
     private bool goOnline = true;
 
     public MainViewModel() {
@@ -22,16 +23,19 @@ namespace OpenMenuEditorWPF {
 
       // for testing no need to go online
       if (this.goOnline) {
-        this.menuFileName = "alacarte.xml";
-        this.fileToStoreLocal = Path.Combine(dirToStoreCombined, this.menuFileName);
-        FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
+        //Task t = Task.Factory.StartNew(() => {
+                                         this.menuFileName = "alacarte.xml";
+                                         this.fileToStoreLocal = Path.Combine(dirToStoreCombined, this.menuFileName);
+                                         FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
 
-        xmlElem = XElement.Load(this.fileToStoreLocal);
+                                         xmlElem = XElement.Load(this.fileToStoreLocal);
+                                         this.OpenMenu.FromXML(xmlElem);
+          //                             });
       }
       else {
         xmlElem = XElement.Load(new StringReader(Resources.alacarte_menu));
+        this.OpenMenu.FromXML(xmlElem);
       }
-      this.OpenMenu.FromXML(xmlElem);
     }
 
     public OpenMenuFormat OpenMenu { get; set; }

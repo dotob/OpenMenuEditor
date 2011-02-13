@@ -6,7 +6,8 @@
         Height="550"
         Width="800"
         x:Name="uc"
-        Closed="uc_Closed">
+        Closed="uc_Closed"
+        Loaded="uc_Loaded">
   <Window.Resources>
     <Style TargetType="{x:Type CheckBox}">
       <Setter Property="Margin"
@@ -205,7 +206,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="tabContent">
-      <TreeView ItemsSource="{Binding Groups}"
+      <TreeView x:Name="tree" ItemsSource="{Binding Groups}"
                 SelectedItemChanged="TreeView_SelectedItemChanged">
       </TreeView>
     </DataTemplate>

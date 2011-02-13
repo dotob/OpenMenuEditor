@@ -1,6 +1,6 @@
 D:\Projects\divers\OpenMenuEditor\OpenMenuSetup\bin\Debug\FringshausMenuEditorSetup.msi
 D:\Projects\divers\OpenMenuEditor\OpenMenuSetup\bin\Debug\FringshausMenuEditorSetup.wixpdb
+obj\Debug\_OpenMenuEditorWPF.wxs
 obj\Debug\Product.wixobj
 obj\Debug\Product.Generated.wixobj
-obj\Debug\_OpenMenuEditorWPF.wxs
 obj\Debug\_OpenMenuEditorWPF.wixobj

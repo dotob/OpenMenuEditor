@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 
-  <Product Id="6e0493cb-a813-4f59-b9c2-367b3b1cbf78" Name="Fringshaus Menu Editor (beta)" Language="1033" Version="1.0.1.0" Manufacturer="dotob" UpgradeCode="8322f190-3c1f-40e1-a661-71719b203802">
-    <Package InstallerVersion="200" Compressed="yes" />
+  <Product Id="6e0493cb-a813-4f59-b9c2-367b3b1cbf78" 
+           Name="Fringshaus Menu Editor (beta)" 
+           Language="1033" 
+           Version="1.0.3.0" 
+           Manufacturer="dotob" 
+           UpgradeCode="8322f190-3c1f-40e1-a661-71719b203802">
+    <Package InstallerVersion="200" 
+             Compressed="yes" />
     <!-- make .net 4 client profile is installed -->
     <PropertyRef Id="NETFRAMEWORK40CLIENT"/>
 
-    <!-- show dir gui -->
+    <!-- show dir choooser  gui -->
     <!--<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
     <UIRef Id="WixUI_InstallDir" />-->
 
-    <Condition Message=".NET Framework 4 wird benötigt. Erst .NET installieren dann diese App.">
+    <Condition Message=".NET Framework 4 wird benötigt. Erst .NET 4 installieren, dann diese App.">
       <![CDATA[Installed OR NETFRAMEWORK40CLIENT]]>
     </Condition>
 
@@ -19,33 +25,40 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLLOCATION" Name="FringshausMenuEditor">
-          <!--<Component Id="cmpA825730267480E6592B3C96928FE61F5" Guid="*">
-            <File Id="filB6FA95E7885F551FCB98AB3D15FB0813" Source="$(var.OpenMenuEditorWPF.TargetDir)\OpenMenuEditorWPF.exe" />
-            <Shortcut Id="desktopFoobar10" Directory="DesktopFolder" Name="Fringshaus Menu Editor" WorkingDirectory='INSTALLDIR' Advertise="yes" />
-          </Component>-->
-
           <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-          <!-- <Component Id="ProductComponent" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e"> -->
-          <!-- TODO: Insert files, registry keys, and other resources here. -->
-          <!-- </Component> -->
+          <!--<Component Id="ProductComponent" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">-->
+            <!-- TODO: Insert files, registry keys, and other resources here. -->
+          <!--</Component>-->
         </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Fringshaus Menu Editor"/>
       </Directory>
     </Directory>
 
     <DirectoryRef Id="ApplicationProgramsFolder">
-      <Component Id="ApplicationShortcut" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">
-        <Shortcut Id="ApplicationStartMenuShortcut" Name="Fringshaus Menu Editor" Description="Das Fringshaus Menu bearbeiten" Target="[APPLICATIONROOTDIRECTORY]OpenMenuEditorWPF.exe"
-                  WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
-        <!--<RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>-->
+      <Component Id="ApplicationShortcut" 
+                 Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="Fringshaus Menu Editor"
+                  Description="Das Fringshaus Menu bearbeiten" 
+                  Target="[INSTALLLOCATION]OpenMenuEditorWPF.exe"
+                  WorkingDirectory="INSTALLLOCATION"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" 
+                       Key="Software\Microsoft\FringshausMenuEditor" 
+                       Name="installed" 
+                       Type="integer" 
+                       Value="1" 
+                       KeyPath="yes"/>
       </Component>
     </DirectoryRef>
 
-
-
     <Feature Id="ProductFeature" Title="OpenMenuSetup" Level="1">
       <!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
-      <!-- <ComponentRef Id="ProductComponent" /> -->
-
+      <!--<ComponentRef Id="ProductComponent" />-->
+      <!-- add the shortcut -->
+      <ComponentRef Id="ApplicationShortcut" />
       <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
       <ComponentGroupRef Id="Product.Generated" />
     </Feature>

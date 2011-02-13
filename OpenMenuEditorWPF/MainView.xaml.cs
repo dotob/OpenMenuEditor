@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using OpenMenuEditor.OpenMenu;
@@ -92,11 +93,17 @@ namespace OpenMenuEditorWPF {
     public ICommand SaveCommand {
       get {
         if (this.saveCommand == null) {
-          this.saveCommand = new DelegateCommand(() => this.ViewModel.Save(),
+          this.saveCommand = new DelegateCommand(() => this.Save(),
                                                  () => true);
         }
         return this.saveCommand;
       }
+    }
+
+    private void Save() {
+      this.Cursor = Cursors.Wait;
+      this.ViewModel.Save();
+      this.Cursor = Cursors.Arrow;
     }
 
     public ICommand CloseCommand {
@@ -125,6 +132,10 @@ namespace OpenMenuEditorWPF {
 #if !DEBUG
       WinSparkleWrapper.Cleanup();
 #endif
+    }
+
+    private void uc_Loaded(object sender, RoutedEventArgs e) {
+      
     }
   }
 }
