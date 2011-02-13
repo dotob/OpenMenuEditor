@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using OpenMenuEditor.OpenMenu;
@@ -8,7 +10,7 @@ namespace OpenMenuEditorWPF {
   /// <summary>
   /// Interaction logic for MainView.xaml
   /// </summary>
-  public partial class MainView : Window {
+  public partial class MainView : Window, INotifyPropertyChanged {
     private ICommand closeCommand;
     private ICommand deleteElementCommand;
     private ICommand moveElementDownCommand;
@@ -21,7 +23,7 @@ namespace OpenMenuEditorWPF {
     public MainView() {
       this.ViewModel = new MainViewModel();
       this.InitializeComponent();
-
+      this.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
       // sparkle updater
 #if !DEBUG
       WinSparkleWrapper.Startup("http://update.dotob.de/openmenueditor.rss");
@@ -128,6 +130,18 @@ namespace OpenMenuEditorWPF {
       }
     }
 
+    private string version;
+    public string Version {
+      get { return this.version; }
+      set {
+        this.version = value;
+        var tmp = this.PropertyChanged;
+        if(tmp!=null) {
+          tmp(this, new PropertyChangedEventArgs("Version"));
+        }
+      }
+    }
+
     private void uc_Closed(object sender, System.EventArgs e) {
 #if !DEBUG
       WinSparkleWrapper.Cleanup();
@@ -137,5 +151,7 @@ namespace OpenMenuEditorWPF {
     private void uc_Loaded(object sender, RoutedEventArgs e) {
       
     }
+
+    public event PropertyChangedEventHandler PropertyChanged;
   }
 }

@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:OpenMenu="clr-namespace:OpenMenuEditor.OpenMenu"
-        Title="Fringhaus Menu-Editor"
         Height="550"
         Width="800"
+        Title="{Binding Path=Version,ElementName=uc, StringFormat=Fringshaus Menu-Editor v.{0}}"
         x:Name="uc"
         Closed="uc_Closed"
         Loaded="uc_Loaded">

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 
-  <Product Id="6e0493cb-a813-4f59-b9c2-367b3b1cbf78" 
+  <Product Id="*" 
            Name="Fringshaus Menu Editor (beta)" 
            Language="1033" 
-           Version="1.0.3.0" 
+           Version="1.0.5.0" 
            Manufacturer="dotob" 
            UpgradeCode="8322f190-3c1f-40e1-a661-71719b203802">
     <Package InstallerVersion="200" 
@@ -12,6 +12,16 @@
     <!-- make .net 4 client profile is installed -->
     <PropertyRef Id="NETFRAMEWORK40CLIENT"/>
 
+    <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+    <Upgrade Id='8322f190-3c1f-40e1-a661-71719b203802'>
+      <UpgradeVersion OnlyDetect='no' Property='PREVIOUSVERSIONSINSTALLED'
+        Minimum='1.0.3.0' IncludeMinimum='yes'
+        Maximum='99.0.4.0' IncludeMaximum='no' />
+    </Upgrade>
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallInitialize" />
+    </InstallExecuteSequence>
+    
     <!-- show dir choooser  gui -->
     <!--<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
     <UIRef Id="WixUI_InstallDir" />-->
