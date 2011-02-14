@@ -26,7 +26,7 @@ namespace OpenMenuEditorWPF {
       this.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
       // sparkle updater
 #if !DEBUG
-      WinSparkleWrapper.Startup("http://update.dotob.de/openmenueditor.rss");
+      WinSparkleWrapper.Startup("http://update.dotob.de/openmenueditor/appcast.xml");
 #endif
     }
 
