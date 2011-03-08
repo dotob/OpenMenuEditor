@@ -118,6 +118,7 @@
     <Resource Include="Images\eye.png" />
     <Resource Include="Images\eye_off.png" />
     <Resource Include="Images\text.png" />
+    <SplashScreen Include="Images\fringshaus_aquarel_header.jpg" />
     <Content Include="WinSparkle.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
