@@ -127,7 +127,7 @@
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate>
-            <Image Source="pack://application:,,,/Images/eye_off.png" />
+            <Image Source="pack://application:,,,/Images/eye.png" />
           </ControlTemplate>
         </Setter.Value>
       </Setter>
@@ -137,7 +137,7 @@
           <Setter Property="Template">
             <Setter.Value>
               <ControlTemplate>
-                <Image Source="pack://application:,,,/Images/eye.png" />
+                <Image Source="pack://application:,,,/Images/eye_off.png" />
               </ControlTemplate>
             </Setter.Value>
           </Setter>

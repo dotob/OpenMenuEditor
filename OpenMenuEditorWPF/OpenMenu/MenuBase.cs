@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Linq;
 
 namespace OpenMenuEditor.OpenMenu {
@@ -7,6 +8,9 @@ namespace OpenMenuEditor.OpenMenu {
   }
 
   public abstract class MenuBase : IMenuXMLSerializable {
+    protected MenuBase() {
+      UID = new Guid().ToString();
+    }
     public string UID { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

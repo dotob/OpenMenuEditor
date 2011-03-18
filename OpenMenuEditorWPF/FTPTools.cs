@@ -1,8 +1,23 @@
 using System.IO;
 using System.Net;
+using Tamir.SharpSsh;
 
 namespace OpenMenuEditorWPF {
   public class FTPTools {
+    public static void UploadScp(string server, string localFile, string remoteFile, string username, string password) {
+      SshTransferProtocolBase sshCp = new Scp(server, username, password);
+      sshCp.Connect();
+      sshCp.Put(localFile, remoteFile);
+      sshCp.Close();
+    }
+    
+    public static void DownloadScp(string server, string localFile, string remoteFile, string username, string password) {
+      SshTransferProtocolBase sshCp = new Scp(server, username, password);
+      sshCp.Connect();
+      sshCp.Get(localFile, remoteFile);
+      sshCp.Close();
+    }
+
     public static void Upload(string server, int port, string localFile, string remoteFile, string username, string password, bool isActive) {
       string url = string.Format("ftp://{0}:{1}/{2}", server, port, remoteFile);
       var ftp = (FtpWebRequest) WebRequest.Create(url);

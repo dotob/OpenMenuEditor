@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using NLog;
 using OpenMenuEditor.OpenMenu;
 
 namespace OpenMenuEditorWPF {
@@ -19,8 +20,10 @@ namespace OpenMenuEditorWPF {
     private ICommand newMenuGroupCommand;
     private ICommand newMenuItemCommand;
     private ICommand saveCommand;
+    private static Logger nlogger = LogManager.GetCurrentClassLogger();
 
     public MainView() {
+      nlogger.Debug("mainview started");
       this.ViewModel = new MainViewModel();
       this.InitializeComponent();
       this.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -30,7 +33,17 @@ namespace OpenMenuEditorWPF {
 #endif
     }
 
-    public MainViewModel ViewModel { get; set; }
+    private MainViewModel viewModel;
+    public MainViewModel ViewModel {
+      get { return this.viewModel; }
+      set {
+        this.viewModel = value;
+        var tmp = this.PropertyChanged;
+        if (tmp != null) {
+          tmp(this, new PropertyChangedEventArgs("ViewModel"));
+        }
+      }
+    }
 
     public ICommand NewMenuCommand {
       get {
@@ -149,7 +162,6 @@ namespace OpenMenuEditorWPF {
     }
 
     private void uc_Loaded(object sender, RoutedEventArgs e) {
-      
     }
 
     public event PropertyChangedEventHandler PropertyChanged;

@@ -1,15 +1,16 @@
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Xml.Linq;
+using NLog;
 using OpenMenuEditor.OpenMenu;
 using OpenMenuEditorWPF.Properties;
 
 namespace OpenMenuEditorWPF {
   public class MainViewModel {
-    private string fileToStoreLocal;
-    private string menuFileName;
+    private readonly string fileToStoreLocal;
+    private readonly string menuFileName;
     private bool goOnline = true;
+    private static Logger nlogger = LogManager.GetCurrentClassLogger();
 
     public MainViewModel() {
       this.OpenMenu = new OpenMenuFormat();
@@ -18,19 +19,26 @@ namespace OpenMenuEditorWPF {
       string dirToStore = "FringshausOpenMenu";
       string dirToStoreCombined = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), dirToStore);
       if (!Directory.Exists(dirToStoreCombined)) {
+        nlogger.Debug("create dir to store: {0}", dirToStoreCombined);
         Directory.CreateDirectory(dirToStoreCombined);
+      }
+      else {
+        nlogger.Debug("use dir to store: {0}", dirToStoreCombined);
       }
 
       // for testing no need to go online
       if (this.goOnline) {
-        //Task t = Task.Factory.StartNew(() => {
-                                         this.menuFileName = "alacarte.xml";
-                                         this.fileToStoreLocal = Path.Combine(dirToStoreCombined, this.menuFileName);
-                                         FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
+        nlogger.Debug("go online", dirToStoreCombined);
 
-                                         xmlElem = XElement.Load(this.fileToStoreLocal);
-                                         this.OpenMenu.FromXML(xmlElem);
-          //                             });
+        //Task t = Task.Factory.StartNew(() => {
+        this.menuFileName = "alacarte.xml";
+        this.fileToStoreLocal = Path.Combine(dirToStoreCombined, this.menuFileName);
+        //FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
+        FTPTools.DownloadScp("dotob.de", this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus");
+
+        xmlElem = XElement.Load(this.fileToStoreLocal);
+        this.OpenMenu.FromXML(xmlElem);
+        //                             });
       }
       else {
         xmlElem = XElement.Load(new StringReader(Resources.alacarte_menu));
@@ -69,15 +77,46 @@ namespace OpenMenuEditorWPF {
       }
     }
 
-    public void MoveSelectedElementUp() {}
+    public void MoveSelectedElementUp() {
+      if (this.SelectedItem is MenuGroup) {
+        var mg = (MenuGroup) this.SelectedItem;
+        int oldIndex = mg.Menu.Groups.IndexOf(mg);
+        if (oldIndex > 0) {
+          mg.Menu.Groups.Move(oldIndex, oldIndex - 1);
+        }
+      }
+      else if (this.SelectedItem is MenuItem) {
+        var mi = (MenuItem) this.SelectedItem;
+        int oldIndex = mi.Group.Items.IndexOf(mi);
+        if (oldIndex > 0) {
+          mi.Group.Items.Move(oldIndex, oldIndex - 1);
+        }
+      }
+    }
 
-    public void MoveSelectedElementDown() {}
+    public void MoveSelectedElementDown() {
+      if (this.SelectedItem is MenuGroup) {
+        var mg = (MenuGroup) this.SelectedItem;
+        int oldIndex = mg.Menu.Groups.IndexOf(mg);
+        if (oldIndex < mg.Menu.Groups.Count - 1) {
+          mg.Menu.Groups.Move(oldIndex, oldIndex + 1);
+        }
+      }
+      else if (this.SelectedItem is MenuItem) {
+        var mi = (MenuItem) this.SelectedItem;
+        int oldIndex = mi.Group.Items.IndexOf(mi);
+        if (oldIndex < mi.Group.Items.Count - 1) {
+          mi.Group.Items.Move(oldIndex, oldIndex + 1);
+        }
+      }
+    }
 
     public void Save() {
       XElement xElement = this.OpenMenu.ToXML();
       if (this.goOnline) {
         xElement.Save(this.fileToStoreLocal);
-        FTPTools.Upload("dotob.de", 21, this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus", false);
+        //FTPTools.Upload("dotob.de", 21, this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus", false);
+        FTPTools.UploadScp("dotob.de", this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus");
       }
       else {
         xElement.Save(this.fileToStoreLocal);
