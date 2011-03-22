@@ -1,21 +1,37 @@
+using System;
 using System.IO;
 using System.Net;
+using NLog;
 using Tamir.SharpSsh;
 
 namespace OpenMenuEditorWPF {
   public class FTPTools {
-    public static void UploadScp(string server, string localFile, string remoteFile, string username, string password) {
-      SshTransferProtocolBase sshCp = new Scp(server, username, password);
-      sshCp.Connect();
-      sshCp.Put(localFile, remoteFile);
-      sshCp.Close();
+    private static readonly Logger nlogger = LogManager.GetCurrentClassLogger();
+
+    public static bool UploadScp(string server, string localFile, string remoteFile, string username, string password) {
+      try {
+        SshTransferProtocolBase sshCp = new Scp(server, username, password);
+        sshCp.Connect();
+        sshCp.Put(localFile, remoteFile);
+        sshCp.Close();
+        return true;
+      } catch (Exception e) {
+        nlogger.ErrorException("while uploading this happened", e);
+        return false;
+      }
     }
     
-    public static void DownloadScp(string server, string localFile, string remoteFile, string username, string password) {
-      SshTransferProtocolBase sshCp = new Scp(server, username, password);
-      sshCp.Connect();
-      sshCp.Get(localFile, remoteFile);
-      sshCp.Close();
+    public static bool DownloadScp(string server, string localFile, string remoteFile, string username, string password) {
+      try {
+        SshTransferProtocolBase sshCp = new Scp(server, username, password);
+        sshCp.Connect();
+        sshCp.Get(localFile, remoteFile);
+        sshCp.Close();
+        return true;
+      } catch (Exception e) {
+        nlogger.ErrorException("while downloading this happened", e);
+        return false;
+      }
     }
 
     public static void Upload(string server, int port, string localFile, string remoteFile, string username, string password, bool isActive) {

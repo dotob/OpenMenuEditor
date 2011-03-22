@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Xml.Linq;
 
 namespace OpenMenuEditor.OpenMenu {
-  public class OpenMenuFormat : IMenuXMLSerializable {
+  public class OpenMenuFormat : NotifyPropertyBase, IMenuXMLSerializable {
     public OpenMenuFormat() {
       this.UUID = Guid.NewGuid().ToString();
     }
