@@ -49,7 +49,7 @@ namespace OpenMenuEditor.OpenMenu {
     public string ToHTML() {
       var sb = new StringBuilder();
       sb.Append("<!DOCTYPE html>\n<html dir=\"ltr\" lang=\"de-DE\">\n<head>\n<meta charset=\"UTF-8\" />\n");
-      sb.Append("<link rel='stylesheet' id='OpenMenu-Template-Default-css'  href='http://fringshaus.dotob.de/wp-content/plugins/open-menu/templates/default/styles/style.css?ver=3.0.3' type='text/css' media='all' /> ");
+      sb.Append("<link rel='stylesheet' id='OpenMenu-Template-Default-css'  href='http://fringshaus.com/wp-content/plugins/open-menu/templates/default/styles/style.css?ver=3.0.3' type='text/css' media='all' /> ");
       sb.Append("</head>");
       sb.Append("<body>");
       foreach (var menu in Menus) {

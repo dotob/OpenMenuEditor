@@ -7,8 +7,10 @@ using NLog;
 using OpenMenuEditor.OpenMenu;
 using OpenMenuEditorWPF.Properties;
 
-namespace OpenMenuEditorWPF {
-  public class MainViewModel : INotifyPropertyChanged {
+namespace OpenMenuEditorWPF
+{
+  public class MainViewModel : INotifyPropertyChanged
+  {
     private static readonly Logger nlogger = LogManager.GetCurrentClassLogger();
     private string fileToStoreLocalXML;
     private string menuFileNameXML;
@@ -68,7 +70,7 @@ namespace OpenMenuEditorWPF {
         this.fileToStoreLocalHTML = Path.Combine(dirToStoreCombined, "alacarte.html");
         //FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
         bool success = true;
-          FTPTools.Download("ftp.fringshaus-com.goracer.de", this.menuFileNameXML, this.fileToStoreLocalXML, "f109925", "tzw19xbm");
+        FTPTools.Download("ftp.fringshaus-com.goracer.de", this.menuFileNameXML, this.fileToStoreLocalXML, "f109925", "tzw19xbm");
 
         if (success) {
           xmlElem = XElement.Load(this.fileToStoreLocalXML);
@@ -100,23 +102,23 @@ namespace OpenMenuEditorWPF {
 
     public void DeleteSelectedElement() {
       if (this.SelectedItem is MenuGroup) {
-        var mg = (MenuGroup) this.SelectedItem;
+        var mg = (MenuGroup)this.SelectedItem;
         mg.Menu.Groups.Remove(mg);
       } else if (this.SelectedItem is MenuItem) {
-        var mi = (MenuItem) this.SelectedItem;
+        var mi = (MenuItem)this.SelectedItem;
         mi.Group.Items.Remove(mi);
       }
     }
 
     public void MoveSelectedElementUp() {
       if (this.SelectedItem is MenuGroup) {
-        var mg = (MenuGroup) this.SelectedItem;
+        var mg = (MenuGroup)this.SelectedItem;
         int oldIndex = mg.Menu.Groups.IndexOf(mg);
         if (oldIndex > 0) {
           mg.Menu.Groups.Move(oldIndex, oldIndex - 1);
         }
       } else if (this.SelectedItem is MenuItem) {
-        var mi = (MenuItem) this.SelectedItem;
+        var mi = (MenuItem)this.SelectedItem;
         int oldIndex = mi.Group.Items.IndexOf(mi);
         if (oldIndex > 0) {
           mi.Group.Items.Move(oldIndex, oldIndex - 1);
@@ -126,13 +128,13 @@ namespace OpenMenuEditorWPF {
 
     public void MoveSelectedElementDown() {
       if (this.SelectedItem is MenuGroup) {
-        var mg = (MenuGroup) this.SelectedItem;
+        var mg = (MenuGroup)this.SelectedItem;
         int oldIndex = mg.Menu.Groups.IndexOf(mg);
         if (oldIndex < mg.Menu.Groups.Count - 1) {
           mg.Menu.Groups.Move(oldIndex, oldIndex + 1);
         }
       } else if (this.SelectedItem is MenuItem) {
-        var mi = (MenuItem) this.SelectedItem;
+        var mi = (MenuItem)this.SelectedItem;
         int oldIndex = mi.Group.Items.IndexOf(mi);
         if (oldIndex < mi.Group.Items.Count - 1) {
           mi.Group.Items.Move(oldIndex, oldIndex + 1);
@@ -149,7 +151,6 @@ namespace OpenMenuEditorWPF {
         //FTPTools.Upload("dotob.de", 21, this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus", false);
         FTPTools.Upload("ftp.fringshaus-com.goracer.de", this.fileToStoreLocalXML, this.menuFileNameXML, "f109925", "tzw19xbm");
         FTPTools.Upload("ftp.fringshaus-com.goracer.de", this.fileToStoreLocalHTML, this.menuFileNameHTML, "f109925", "tzw19xbm");
-
       } else {
         xElement.Save(this.fileToStoreLocalXML);
       }
