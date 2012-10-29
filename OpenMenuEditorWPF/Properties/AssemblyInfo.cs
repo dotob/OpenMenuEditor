@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Fringshaus Menu Editor")]
-[assembly: AssemblyDescription("Editor für Fringshaus OpenMenu xml-File")]
+[assembly: AssemblyDescription("Editor für Fringshaus OpenMenu xml/html-File")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("dotob")]
 [assembly: AssemblyProduct("FringshausMenuEditor")]
-[assembly: AssemblyCopyright("Copyright © dotob 2011")]
+[assembly: AssemblyCopyright("Copyright © dotob 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.4.0.0")]
-[assembly: AssemblyFileVersion("2.4.0.0")]
+[assembly: AssemblyVersion("2.5.0.0")]
+[assembly: AssemblyFileVersion("2.5.0.0")]
