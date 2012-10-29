@@ -36,13 +36,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiffieHellman">
+    <Reference Include="DiffieHellman, Version=0.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\DiffieHellman.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL" />
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.5.8.10295, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
-    <Reference Include="Org.Mentalis.Security">
+    <Reference Include="Org.Mentalis.Security, Version=1.0.13.715, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Org.Mentalis.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="sharpSshTest">
+      <HintPath>..\lib\sharpSshTest.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,7 +63,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Tamir.SharpSSH">
+    <Reference Include="Tamir.SharpSSH, Version=1.1.1.13, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Tamir.SharpSSH.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -133,6 +142,12 @@
     <Resource Include="Images\eye_off.png" />
     <Resource Include="Images\text.png" />
     <SplashScreen Include="Images\fringshaus_aquarel_header.jpg" />
+    <Content Include="DiffieHellman.dll" />
+    <Content Include="NLog.dll" />
+    <Resource Include="NLog.xml" />
+    <Content Include="Org.Mentalis.Security.dll" />
+    <Content Include="sharpSshTest.exe" />
+    <Content Include="Tamir.SharpSSH.dll" />
     <Content Include="WinSparkle.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

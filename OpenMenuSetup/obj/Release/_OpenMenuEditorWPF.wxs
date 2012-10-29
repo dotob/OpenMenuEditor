@@ -112,21 +112,6 @@
     </Fragment>
     <Fragment>
         <DirectoryRef Id="INSTALLLOCATION">
-            <Component Id="cmp42F6DC2DEC81E3A1B953BB85A06DD1FF" Guid="*">
-                <File Id="filAACD725AC2C42B151598D30A814DF88D" Source="$(var.OpenMenuEditorWPF.ProjectDir)\DiffieHellman.dll" />
-            </Component>
-            <Component Id="cmp22A372C88CCD2C7948066E8257F074F1" Guid="*">
-                <File Id="filC65B35EE937532247A5D03856D99F0FC" Source="$(var.OpenMenuEditorWPF.ProjectDir)\NLog.dll" />
-            </Component>
-            <Component Id="cmp36CBEFA3C9DDA84AEE07216E0C1A62DE" Guid="*">
-                <File Id="filC99D875CCD3CE398CC8639BEE61A2BF2" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Org.Mentalis.Security.dll" />
-            </Component>
-            <Component Id="cmp61C45CE2DBD8FE9E26F17DEB9AEE6453" Guid="*">
-                <File Id="fil8BB34E87A84BFD8C0111A93B1DD2DE3E" Source="$(var.OpenMenuEditorWPF.ProjectDir)\sharpSshTest.exe" />
-            </Component>
-            <Component Id="cmp6C3109451C7E0C5B672A97BD6080F28A" Guid="*">
-                <File Id="fil01F0540E338CE210629A04BA60895581" Source="$(var.OpenMenuEditorWPF.ProjectDir)\Tamir.SharpSSH.dll" />
-            </Component>
             <Component Id="cmpE69CE85FE5F385B35B4696372AF5D015" Guid="*">
                 <File Id="filA14C0F862583255EC80598E07532B56E" Source="$(var.OpenMenuEditorWPF.ProjectDir)\WinSparkle.dll" />
             </Component>
@@ -134,11 +119,6 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="OpenMenuEditorWPF.Content">
-            <ComponentRef Id="cmp42F6DC2DEC81E3A1B953BB85A06DD1FF" />
-            <ComponentRef Id="cmp22A372C88CCD2C7948066E8257F074F1" />
-            <ComponentRef Id="cmp36CBEFA3C9DDA84AEE07216E0C1A62DE" />
-            <ComponentRef Id="cmp61C45CE2DBD8FE9E26F17DEB9AEE6453" />
-            <ComponentRef Id="cmp6C3109451C7E0C5B672A97BD6080F28A" />
             <ComponentRef Id="cmpE69CE85FE5F385B35B4696372AF5D015" />
         </ComponentGroup>
     </Fragment>

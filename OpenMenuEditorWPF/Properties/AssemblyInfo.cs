@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("Fringshaus Menu Editor")]
 [assembly: AssemblyDescription("Editor für Fringshaus OpenMenu xml-File")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("dotob")]
 [assembly: AssemblyProduct("FringshausMenuEditor")]
 [assembly: AssemblyCopyright("Copyright © dotob 2011")]
 [assembly: AssemblyTrademark("")]
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.0.0")]
-[assembly: AssemblyFileVersion("2.1.0.0")]
+[assembly: AssemblyVersion("2.4.0.0")]
+[assembly: AssemblyFileVersion("2.4.0.0")]

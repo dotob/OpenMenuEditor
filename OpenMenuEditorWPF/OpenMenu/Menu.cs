@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Xml.Linq;
+using Tamir.SharpSsh.java.lang;
 
 namespace OpenMenuEditor.OpenMenu {
   public class Menu : MenuBase {
@@ -42,6 +44,13 @@ namespace OpenMenuEditor.OpenMenu {
       }
       ret.Add(items);
       return ret;
+    }
+
+    public override void ToHTML(StringBuilder sb) {
+      sb.AppendFormat("<div id=\"om_menu\"><div class=\"menu_name\">{0}</div><div class=\"menu_content\">\n", this.Name);
+      foreach (var menuGroup in Groups) {
+        menuGroup.ToHTML(sb);
+      }
     }
   }
 }

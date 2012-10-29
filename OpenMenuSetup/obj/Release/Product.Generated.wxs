@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <ComponentGroup Id="Product.Generated">
+      <ComponentGroupRef Id="OpenMenuEditorWPF.Binaries" />
+      <ComponentGroupRef Id="OpenMenuEditorWPF.Content" />
+      <ComponentGroupRef Id="OpenMenuEditorWPF.Satellites" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

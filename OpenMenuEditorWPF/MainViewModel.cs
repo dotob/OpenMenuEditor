@@ -10,8 +10,8 @@ using OpenMenuEditorWPF.Properties;
 namespace OpenMenuEditorWPF {
   public class MainViewModel : INotifyPropertyChanged {
     private static readonly Logger nlogger = LogManager.GetCurrentClassLogger();
-    private string fileToStoreLocal;
-    private string menuFileName;
+    private string fileToStoreLocalXML;
+    private string menuFileNameXML;
     private bool goOnline = true;
 
     public MainViewModel() {
@@ -19,6 +19,8 @@ namespace OpenMenuEditorWPF {
     }
 
     private OpenMenuFormat openMenu = new OpenMenuFormat();
+    private string fileToStoreLocalHTML;
+    private string menuFileNameHTML;
 
     public OpenMenuFormat OpenMenu {
       get { return this.openMenu; }
@@ -60,13 +62,16 @@ namespace OpenMenuEditorWPF {
       if (this.goOnline) {
         nlogger.Debug("go online", dirToStoreCombined);
 
-        this.menuFileName = "alacarte.xml";
-        this.fileToStoreLocal = Path.Combine(dirToStoreCombined, this.menuFileName);
+        this.menuFileNameXML = "webspace/httpdocs/wordpress/alacarte.xml";
+        this.menuFileNameHTML = "webspace/httpdocs/wordpress/alacarte.html";
+        this.fileToStoreLocalXML = Path.Combine(dirToStoreCombined, "alacarte.xml");
+        this.fileToStoreLocalHTML = Path.Combine(dirToStoreCombined, "alacarte.html");
         //FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
-        bool success = FTPTools.DownloadScp("dotob.de", this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus");
+        bool success = true;
+          FTPTools.Download("ftp.fringshaus-com.goracer.de", this.menuFileNameXML, this.fileToStoreLocalXML, "f109925", "tzw19xbm");
 
         if (success) {
-          xmlElem = XElement.Load(this.fileToStoreLocal);
+          xmlElem = XElement.Load(this.fileToStoreLocalXML);
           this.OpenMenu.FromXML(xmlElem);
         } else {
           MessageBox.Show("Leider ist beim laden des Menüs ein Fehler aufgetreten. Siehe LogDatei...");
@@ -136,13 +141,17 @@ namespace OpenMenuEditorWPF {
     }
 
     public void Save() {
+      String html = this.OpenMenu.ToHTML();
       XElement xElement = this.OpenMenu.ToXML();
       if (this.goOnline) {
-        xElement.Save(this.fileToStoreLocal);
+        xElement.Save(this.fileToStoreLocalXML);
+        File.WriteAllText(this.fileToStoreLocalHTML, html);
         //FTPTools.Upload("dotob.de", 21, this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus", false);
-        FTPTools.UploadScp("dotob.de", this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus");
+        FTPTools.Upload("ftp.fringshaus-com.goracer.de", this.fileToStoreLocalXML, this.menuFileNameXML, "f109925", "tzw19xbm");
+        FTPTools.Upload("ftp.fringshaus-com.goracer.de", this.fileToStoreLocalHTML, this.menuFileNameHTML, "f109925", "tzw19xbm");
+
       } else {
-        xElement.Save(this.fileToStoreLocal);
+        xElement.Save(this.fileToStoreLocalXML);
       }
     }
   }

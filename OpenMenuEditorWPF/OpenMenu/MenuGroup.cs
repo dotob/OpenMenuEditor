@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Xml.Linq;
 
 namespace OpenMenuEditor.OpenMenu {
@@ -40,6 +42,13 @@ namespace OpenMenuEditor.OpenMenu {
       }
       ret.Add(items);
       return ret;
+    }
+
+    public override void ToHTML(StringBuilder sb) {
+      sb.AppendFormat("\t<h2>{0}</h2>\n", this.Name);
+      foreach (var menuItem in Items) {
+        menuItem.ToHTML(sb);
+      }
     }
   }
 }
