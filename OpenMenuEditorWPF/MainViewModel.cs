@@ -64,13 +64,14 @@ namespace OpenMenuEditorWPF
       if (this.goOnline) {
         nlogger.Debug("go online", dirToStoreCombined);
 
-        this.menuFileNameXML = "webspace/httpdocs/wordpress/alacarte.xml";
-        this.menuFileNameHTML = "webspace/httpdocs/wordpress/alacarte.html";
+        var appSettings = Properties.Settings.Default;
+        this.menuFileNameXML = appSettings.ftpDir + "/alacarte.xml"; // ftp path
+        this.menuFileNameHTML = appSettings.ftpDir + "/alacarte.html"; // ftp path
         this.fileToStoreLocalXML = Path.Combine(dirToStoreCombined, "alacarte.xml");
         this.fileToStoreLocalHTML = Path.Combine(dirToStoreCombined, "alacarte.html");
         //FTPTools.Download("dotob.de", 21, this.menuFileName, this.fileToStoreLocal, "fringshaus", "fringshaus", false);
         bool success = true;
-        FTPTools.Download("ftp.fringshaus-com.goracer.de", this.menuFileNameXML, this.fileToStoreLocalXML, "f109925", "tzw19xbm");
+        FTPTools.Download(appSettings.ftpServer, this.menuFileNameXML, this.fileToStoreLocalXML, appSettings.ftpUser, appSettings.ftpPassword);
 
         if (success) {
           xmlElem = XElement.Load(this.fileToStoreLocalXML);
@@ -148,9 +149,10 @@ namespace OpenMenuEditorWPF
       if (this.goOnline) {
         xElement.Save(this.fileToStoreLocalXML);
         File.WriteAllText(this.fileToStoreLocalHTML, html);
+        var appSettings = Properties.Settings.Default;
         //FTPTools.Upload("dotob.de", 21, this.fileToStoreLocal, this.menuFileName, "fringshaus", "fringshaus", false);
-        FTPTools.Upload("ftp.fringshaus-com.goracer.de", this.fileToStoreLocalXML, this.menuFileNameXML, "f109925", "tzw19xbm");
-        FTPTools.Upload("ftp.fringshaus-com.goracer.de", this.fileToStoreLocalHTML, this.menuFileNameHTML, "f109925", "tzw19xbm");
+        FTPTools.Upload(appSettings.ftpServer, this.fileToStoreLocalXML, this.menuFileNameXML, appSettings.ftpUser, appSettings.ftpPassword);
+        FTPTools.Upload(appSettings.ftpServer, this.fileToStoreLocalHTML, this.menuFileNameHTML, appSettings.ftpUser, appSettings.ftpPassword);
       } else {
         xElement.Save(this.fileToStoreLocalXML);
       }

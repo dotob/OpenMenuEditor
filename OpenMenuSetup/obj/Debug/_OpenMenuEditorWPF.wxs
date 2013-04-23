@@ -5,11 +5,15 @@
             <Component Id="cmpA825730267480E6592B3C96928FE61F4" Guid="*">
                 <File Id="filB6FA95E7885F551FCB98AB3D15FB0813" Source="$(var.OpenMenuEditorWPF.TargetDir)\OpenMenuEditorWPF.exe" />
             </Component>
+            <Component Id="cmp10AE7162296748C50E12486CA50F7891" Guid="*">
+                <File Id="fil22E1E089B5C87DC45B294DE08579E126" Source="$(var.OpenMenuEditorWPF.TargetDir)\OpenMenuEditorWPF.exe.config" />
+            </Component>
         </DirectoryRef>
     </Fragment>
     <Fragment>
         <ComponentGroup Id="OpenMenuEditorWPF.Binaries">
             <ComponentRef Id="cmpA825730267480E6592B3C96928FE61F4" />
+            <ComponentRef Id="cmp10AE7162296748C50E12486CA50F7891" />
         </ComponentGroup>
     </Fragment>
     <Fragment>
@@ -43,6 +47,9 @@
             </Component>
             <Component Id="cmpDC205113694DE9AFBBC1F367414159BA" Guid="*">
                 <File Id="fil9495D57BB4C6609D535700807EC530AE" Source="$(var.OpenMenuEditorWPF.ProjectDir)\MainView.xaml.cs" />
+            </Component>
+            <Component Id="cmpDFE482D4199155FAC95B20A741FA5599" Guid="*">
+                <File Id="fil9AB7F0D58CF5494FD1A57F027DB2E05F" Source="$(var.OpenMenuEditorWPF.ProjectDir)\app.config" />
             </Component>
             <Component Id="cmpCA0CBB196B40260203D9C5F164205894" Guid="*">
                 <File Id="fil920C31CF76BEE6F2972F93F1347D2532" Source="$(var.OpenMenuEditorWPF.ProjectDir)\OpenMenuEditorWPF.csproj" />
@@ -96,6 +103,7 @@
             <ComponentRef Id="cmp78ABADE14009E3607C2A65B0D0F2D402" />
             <ComponentRef Id="cmpBCDB4F60A783135160137A98172D44B2" />
             <ComponentRef Id="cmpDC205113694DE9AFBBC1F367414159BA" />
+            <ComponentRef Id="cmpDFE482D4199155FAC95B20A741FA5599" />
             <ComponentRef Id="cmpCA0CBB196B40260203D9C5F164205894" />
             <ComponentRef Id="cmp55D38CF3772438EEE3CD81D3C480339B" />
             <ComponentRef Id="cmp4433D6297E7BB3EE9D13573CC28973DA" />
