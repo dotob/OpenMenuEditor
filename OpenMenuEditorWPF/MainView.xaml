@@ -4,7 +4,7 @@
         xmlns:OpenMenu="clr-namespace:OpenMenuEditor.OpenMenu"
         Height="550"
         Width="800"
-        Title="{Binding Path=Version, ElementName=uc, StringFormat=Fringshaus Menu-Editor v.{0}}"
+        Title="{Binding Path=Version, ElementName=uc, StringFormat=Fringshaus Menu-Editor v{0}}"
         x:Name="uc"
         Closed="uc_Closed"
         Loaded="uc_Loaded">

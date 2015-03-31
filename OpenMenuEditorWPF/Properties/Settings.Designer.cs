@@ -25,7 +25,7 @@ namespace OpenMenuEditorWPF.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("menueditor")]
+        [global::System.Configuration.DefaultSettingValueAttribute("menueditor@fringshaus.com")]
         public string ftpUser {
             get {
                 return ((string)(this["ftpUser"]));
@@ -43,7 +43,7 @@ namespace OpenMenuEditorWPF.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fringshaus.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ftp.fringshaus.com")]
         public string ftpServer {
             get {
                 return ((string)(this["ftpServer"]));

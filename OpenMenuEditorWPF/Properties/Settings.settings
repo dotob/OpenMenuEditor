@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="ftpUser" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">menueditor</Value>
+      <Value Profile="(Default)">menueditor@fringshaus.com</Value>
     </Setting>
     <Setting Name="ftpPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">4ov0rxi2t5ut</Value>
     </Setting>
     <Setting Name="ftpServer" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">fringshaus.com</Value>
+      <Value Profile="(Default)">ftp.fringshaus.com</Value>
     </Setting>
     <Setting Name="ftpDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">.</Value>
