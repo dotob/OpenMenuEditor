@@ -1,0 +1,13 @@
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\DiffieHellman.dll
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\NLog.config
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\NLog.dll
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\NLog.xml
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\nunit.framework.dll
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\nunit.framework.xml
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\OpenMenuEditorWPF.exe
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\OpenMenuEditorWPF.exe.config
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\OpenMenuEditorWPF.pdb
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\Org.Mentalis.Security.dll
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\sharpSshTest.exe
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\Tamir.SharpSSH.dll
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuEditorWPF\bin\Debug\WinSparkle.dll

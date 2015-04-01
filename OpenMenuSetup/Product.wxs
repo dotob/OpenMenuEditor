@@ -2,16 +2,16 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 
   <Product Id="*" 
-           Name="Fringshaus Menu Editor v2.6" 
+           Name="Fringshaus Menu Editor v2.7" 
            Language="1033" 
-           Version="2.6.0.0" 
+           Version="2.7.0.0" 
            Manufacturer="dotob" 
            UpgradeCode="8322f190-3c1f-40e1-a661-71719b203802">
     <Package InstallerVersion="200" 
              Compressed="yes" />
     <!-- make .net 4 client profile is installed -->
     <PropertyRef Id="NETFRAMEWORK40CLIENT"/>
-
+    
     <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
     <Upgrade Id='8322f190-3c1f-40e1-a661-71719b203802'>
       <UpgradeVersion OnlyDetect='no' Property='PREVIOUSVERSIONSINSTALLED'
@@ -36,9 +36,22 @@
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLLOCATION" Name="FringshausMenuEditor">
           <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-          <!--<Component Id="ProductComponent" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">-->
+          <Component Id="ProductComponent" Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">
             <!-- TODO: Insert files, registry keys, and other resources here. -->
-          <!--</Component>-->
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)DiffieHellman.dll" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)NLog.config" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)NLog.dll" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)NLog.xml" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)nunit.framework.dll" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)nunit.framework.xml" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)OpenMenuEditorWPF.exe" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)OpenMenuEditorWPF.pdb" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)OpenMenuEditorWPF.exe.config" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)Org.Mentalis.Security.dll" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)sharpSshTest.exe" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)Tamir.SharpSSH.dll" />
+            <File Source="$(var.OpenMenuEditorWPF.TargetDir)WinSparkle.dll" />
+          </Component>
         </Directory>
       </Directory>
       <Directory Id="ProgramMenuFolder">
@@ -48,7 +61,7 @@
 
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" 
-                 Guid="e879c26b-9672-4137-baa9-9b0f98e8203e">
+                 Guid="e879c26b-9672-4137-baa9-9b0f98e8202e">
         <Shortcut Id="ApplicationStartMenuShortcut"
                   Name="Fringshaus Menu Editor"
                   Description="Das Fringshaus Menu bearbeiten" 
@@ -66,11 +79,9 @@
 
     <Feature Id="ProductFeature" Title="OpenMenuSetup" Level="1">
       <!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
-      <!--<ComponentRef Id="ProductComponent" />-->
+      <ComponentRef Id="ProductComponent" />
       <!-- add the shortcut -->
       <ComponentRef Id="ApplicationShortcut" />
-      <!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
-      <ComponentGroupRef Id="Product.Generated" />
     </Feature>
   </Product>
 </Wix>

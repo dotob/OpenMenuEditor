@@ -1,0 +1,2 @@
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuSetup\bin\Debug\FringshausMenuEditorSetup.msi
+d:\sync\_private\devel\OpenMenuEditor\OpenMenuSetup\bin\Debug\FringshausMenuEditorSetup.wixpdb
